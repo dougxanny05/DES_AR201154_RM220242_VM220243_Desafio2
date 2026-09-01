@@ -1,0 +1,6 @@
+@DES_AR201154_RM220242_VM220243_Desafio2_HostAddress = http://localhost:5111
+
+GET {{DES_AR201154_RM220242_VM220243_Desafio2_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

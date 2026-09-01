@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="DES_AR201154_RM220242_VM220243_Desafio2/DES_AR201154_RM220242_VM220243_Desafio2.csproj" />
+  <Project Path="Eventos.API/Eventos.API.csproj" Id="d21cf1aa-d5f1-4dba-af89-802b23fc7e3c" />
+  <Project Path="Eventos.BL/Eventos.BL.csproj" Id="266f9f6e-2888-419b-88c0-6de69b74ec90" />
+  <Project Path="Eventos.Common/Eventos.Common.csproj" Id="b0b2b05f-8dd7-4518-b582-e2a92eaf66d8" />
+  <Project Path="Eventos.DAL/Eventos.DAL.csproj" Id="26c66caa-b135-4004-bed6-4b2728cda793" />
+  <Project Path="Eventos.Entities/Eventos.Entities.csproj" Id="07a0984d-4e6c-4fc8-a45d-ebea1234d9b4" />
+</Solution>
