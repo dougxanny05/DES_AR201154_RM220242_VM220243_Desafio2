@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/database/">
+    <File Path="CrearBaseDatos.sql" />
+  </Folder>
   <Project Path="DES_AR201154_RM220242_VM220243_Desafio2/DES_AR201154_RM220242_VM220243_Desafio2.csproj" />
   <Project Path="Eventos.API/Eventos.API.csproj" Id="d21cf1aa-d5f1-4dba-af89-802b23fc7e3c" />
   <Project Path="Eventos.BL/Eventos.BL.csproj" Id="266f9f6e-2888-419b-88c0-6de69b74ec90" />
