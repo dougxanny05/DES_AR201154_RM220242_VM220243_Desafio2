@@ -6,7 +6,7 @@
       "DownstreamHostAndPorts": [ { "Host": "localhost", "Port": 7135 } ],
       "UpstreamPathTemplate": "/eventos",
       "UpstreamHttpMethod": [ "Get" ],
-      "RateLimitOptions": { "EnableRateLimiting": true, "Period": "1m", "Limit": 10 },
+      "RateLimitOptions": { "EnableRateLimiting": true, "Period": "1m", "Limit": 10, "ClientIdHeader": "ClientId" },
       "FileCacheOptions": { "TtlSeconds": 10 }
     },
     {
@@ -15,7 +15,7 @@
       "DownstreamHostAndPorts": [ { "Host": "localhost", "Port": 7135 } ],
       "UpstreamPathTemplate": "/eventos/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "RateLimitOptions": { "EnableRateLimiting": true, "Period": "1m", "Limit": 10 },
+      "RateLimitOptions": { "EnableRateLimiting": true, "Period": "1m", "Limit": 10, "ClientIdHeader": "ClientId" },
       "FileCacheOptions": { "TtlSeconds": 10 }
     },
     {
@@ -24,7 +24,7 @@
       "DownstreamHostAndPorts": [ { "Host": "localhost", "Port": 7135 } ],
       "UpstreamPathTemplate": "/participantes",
       "UpstreamHttpMethod": [ "Get" ],
-      "RateLimitOptions": { "EnableRateLimiting": true, "Period": "1m", "Limit": 10 },
+      "RateLimitOptions": { "EnableRateLimiting": true, "Period": "1m", "Limit": 10, "ClientIdHeader": "ClientId" },
       "FileCacheOptions": { "TtlSeconds": 10 }
     },
     {
@@ -33,7 +33,7 @@
       "DownstreamHostAndPorts": [ { "Host": "localhost", "Port": 7135 } ],
       "UpstreamPathTemplate": "/participantes/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "RateLimitOptions": { "EnableRateLimiting": true, "Period": "1m", "Limit": 10 },
+      "RateLimitOptions": { "EnableRateLimiting": true, "Period": "1m", "Limit": 10, "ClientIdHeader": "ClientId" },
       "FileCacheOptions": { "TtlSeconds": 10 }
     },
     {
@@ -42,7 +42,7 @@
       "DownstreamHostAndPorts": [ { "Host": "localhost", "Port": 7135 } ],
       "UpstreamPathTemplate": "/organizadores",
       "UpstreamHttpMethod": [ "Get" ],
-      "RateLimitOptions": { "EnableRateLimiting": true, "Period": "1m", "Limit": 10 },
+      "RateLimitOptions": { "EnableRateLimiting": true, "Period": "1m", "Limit": 10, "ClientIdHeader": "ClientId" },
       "FileCacheOptions": { "TtlSeconds": 10 }
     },
     {
@@ -51,7 +51,7 @@
       "DownstreamHostAndPorts": [ { "Host": "localhost", "Port": 7135 } ],
       "UpstreamPathTemplate": "/organizadores/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "RateLimitOptions": { "EnableRateLimiting": true, "Period": "1m", "Limit": 10 },
+      "RateLimitOptions": { "EnableRateLimiting": true, "Period": "1m", "Limit": 10, "ClientIdHeader": "ClientId" },
       "FileCacheOptions": { "TtlSeconds": 10 }
     }
   ],

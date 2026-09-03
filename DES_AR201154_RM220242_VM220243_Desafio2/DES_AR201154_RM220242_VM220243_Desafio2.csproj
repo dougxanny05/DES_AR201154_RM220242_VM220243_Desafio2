@@ -16,7 +16,6 @@
     <PackageReference Include="Ocelot" Version="25.0.0" />
     <PackageReference Include="Scalar.AspNetCore" Version="2.17.2" />
     <PackageReference Include="StackExchange.Redis" Version="3.1.31" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.1" />
   </ItemGroup>
 
   <!-- Ensure Ocelot configuration files are copied to the gateway output so AddJsonFile can load them when running from IDE -->

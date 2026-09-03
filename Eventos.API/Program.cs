@@ -5,11 +5,15 @@ using Microsoft.Extensions.Configuration;
 using Eventos.BL;
 using Eventos.BL.Interfaces;
 using AutoMapper;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configuration
-builder.Services.Configure<AppSettings>(builder.Configuration);
+builder.Services.Configure<AppSettings>(options =>
+{
+    options.ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? string.Empty;
+});
 
 // Add DAL services (repositories)
 builder.Services.AddRepositoryConnector();
@@ -29,8 +33,7 @@ builder.Services.AddStackExchangeRedisCache(options =>
 });
 
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
@@ -49,8 +52,8 @@ catch (Exception ex)
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
 app.UseRouting();
