@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Eventos.Entities\Eventos.Entities.csproj" />
-    <ProjectReference Include="..\Eventos.DAL\Eventos.DAL.csproj" />
+    <PackageReference Include="AutoMapper" Version="16.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="16.2.0" />
+    <ProjectReference Include="..\Eventos.DAL\Eventos.DAL.csproj" />
+    <ProjectReference Include="..\Eventos.Entities\Eventos.Entities.csproj" />
   </ItemGroup>
 
 </Project>
