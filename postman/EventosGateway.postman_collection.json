@@ -1,0 +1,64 @@
+{
+  "info": {
+    "name": "Eventos Gateway",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get all eventos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5001/eventos",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5001",
+          "path": ["eventos"]
+        }
+      }
+    },
+    {
+      "name": "Get evento by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5001/eventos/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5001",
+          "path": ["eventos","1"]
+        }
+      }
+    },
+    {
+      "name": "Create evento",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombreEvento\": \"Evento Postman\",\n  \"fechaEvento\": \"2026-10-01T10:00:00\",\n  \"lugarEvento\": \"Sala Principal\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5001/eventos",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5001",
+          "path": ["eventos"]
+        }
+      }
+    },
+    {
+      "name": "Get participantes",
+      "request": { "method": "GET", "url": { "raw": "http://localhost:5001/participantes", "protocol": "http", "host": ["localhost"], "port": "5001", "path": ["participantes"] } }
+    },
+    {
+      "name": "Get organizadores",
+      "request": { "method": "GET", "url": { "raw": "http://localhost:5001/organizadores", "protocol": "http", "host": ["localhost"], "port": "5001", "path": ["organizadores"] } }
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 ﻿using Eventos.DAL.Interfaces;
 using Eventos.Entities.Models;
+using System.Linq;
 
 namespace Eventos.DAL
 {
@@ -16,7 +17,8 @@ namespace Eventos.DAL
 
         public async Task<List<Participante>> GetParticipantesAsync()
         {
-            return [.. (await databaseRepository.QueryAsync<Participante>(Queries.GetAll))];
+            var items = await databaseRepository.QueryAsync<Participante>(Queries.GetAll);
+            return items.ToList();
         }
 
         public async Task<Participante?> GetParticipanteByIdAsync(int id)

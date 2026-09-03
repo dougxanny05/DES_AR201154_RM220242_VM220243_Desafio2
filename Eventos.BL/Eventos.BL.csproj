@@ -8,6 +8,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Eventos.Entities\Eventos.Entities.csproj" />
+    <ProjectReference Include="..\Eventos.DAL\Eventos.DAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="16.2.0" />
   </ItemGroup>
 
 </Project>

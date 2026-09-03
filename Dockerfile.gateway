@@ -1,0 +1,20 @@
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+WORKDIR /src
+# Copy the repository into the container
+COPY . ./
+
+# The gateway project file is inside the folder DES_AR201154_RM220242_VM220243_Desafio2
+# Change working directory to that project folder and publish from there so the .csproj path exists
+WORKDIR /src/DES_AR201154_RM220242_VM220243_Desafio2
+# Publish the gateway project
+RUN dotnet publish "DES_AR201154_RM220242_VM220243_Desafio2.csproj" -c Release -o /app/publish
+
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
+WORKDIR /app
+COPY --from=build /app/publish .
+ENV ASPNETCORE_URLS=http://+:80
+EXPOSE 80
+# Copy Ocelot configuration for Docker environment
+COPY ocelot.Docker.json ./
+
+ENTRYPOINT ["dotnet", "DES_AR201154_RM220242_VM220243_Desafio2.dll"]

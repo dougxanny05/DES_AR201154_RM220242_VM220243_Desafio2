@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Logging;
 using System.Reflection;
 using System.Text;
+using System.IO;
+using System.Linq;
 
 namespace Eventos.DAL
 {
@@ -95,10 +97,30 @@ namespace Eventos.DAL
             var assembly = Assembly.GetExecutingAssembly();
             const string resourceName = "Eventos.DAL.Scripts.CrearBaseDatos.sql";
 
-            using var stream = assembly.GetManifestResourceStream(resourceName)
-                ?? throw new InvalidOperationException($"No se encontró el recurso embebido '{resourceName}'.");
-            using var reader = new StreamReader(stream);
-            return reader.ReadToEnd();
+            using var stream = assembly.GetManifestResourceStream(resourceName);
+            if (stream != null)
+            {
+                using var reader = new StreamReader(stream);
+                return reader.ReadToEnd();
+            }
+
+            // Fallback: buscar el archivo SQL en disco (varios niveles por si el working dir cambia)
+            var possiblePaths = new[] {
+                Path.Combine(AppContext.BaseDirectory, "CrearBaseDatos.sql"),
+                Path.Combine(AppContext.BaseDirectory, "..", "CrearBaseDatos.sql"),
+                Path.Combine(AppContext.BaseDirectory, "..", "..", "CrearBaseDatos.sql"),
+                Path.Combine(Directory.GetCurrentDirectory(), "CrearBaseDatos.sql")
+            };
+
+            var found = possiblePaths.FirstOrDefault(File.Exists);
+            if (found != null)
+            {
+                return File.ReadAllText(found);
+            }
+
+            // Último recurso: listar recursos embebidos para ayudar al diagnóstico
+            var names = string.Join(", ", assembly.GetManifestResourceNames());
+            throw new InvalidOperationException($"No se encontró el recurso embebido '{resourceName}' ni el archivo CrearBaseDatos.sql en disco. Recursos disponibles: {names}");
         }
 
         /// <summary>
@@ -133,7 +155,8 @@ namespace Eventos.DAL
                 batches.Add(current.ToString());
             }
 
-            return [.. batches.Where(b => !b.TrimStart().StartsWith("USE ", StringComparison.OrdinalIgnoreCase))];
+            // Filtra los lotes que no empiezan con "USE " y devuelve una lista
+            return batches.Where(b => !b.TrimStart().StartsWith("USE ", StringComparison.OrdinalIgnoreCase)).ToList();
         }
     }
 }

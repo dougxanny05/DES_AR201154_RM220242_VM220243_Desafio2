@@ -9,13 +9,25 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="16.2.0" />
     <PackageReference Include="Dapper" Version="2.1.79" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="11.0.0-preview.7.26381.103" />
+    <!-- Removed Microsoft.AspNetCore.OpenApi preview package to avoid source-generator missing types during build -->
     <PackageReference Include="Microsoft.Data.SqlClient" Version="7.1.0-preview3.26238.4" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="11.0.0-preview.7.26381.103" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="11.0.0-preview.7.26381.103" />
     <PackageReference Include="Ocelot" Version="25.0.0" />
     <PackageReference Include="Scalar.AspNetCore" Version="2.17.2" />
     <PackageReference Include="StackExchange.Redis" Version="3.1.31" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.1" />
   </ItemGroup>
+
+  <!-- Ensure Ocelot configuration files are copied to the gateway output so AddJsonFile can load them when running from IDE -->
+  <ItemGroup>
+    <Content Include="..\ocelot.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ocelot.Docker.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
 </Project>
